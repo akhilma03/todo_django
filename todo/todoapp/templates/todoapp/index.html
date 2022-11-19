@@ -1,0 +1,85 @@
+{% extends 'todoapp/base.html' %} {% block content %}
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="banner">
+                          <div class="bannertext">
+                            <h1>TODO</h1>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <form action="" method="POST" class="mb-3 shadow">
+                          {% csrf_token %}
+                
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="task"
+                              placeholder="Enter Your Task"
+                            />
+                          </div>
+                
+                          <div class="form-group">
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="priority"
+                              placeholder="Priority"
+                            />
+                          </div>
+
+                          <div class="form-group">
+                            <input
+                              type="date"
+                              class="form-control"
+                              name="date"
+                             
+                            />
+                          </div>
+
+                
+                          <input type="submit" class="btn btn-success" />
+                        </form>
+                      </div>
+                
+                      <div class="col-md-6">
+                        {% for i in task%}
+                        <div class="shadow card">
+                          <div class="card-body">
+                            <h5 class="card-title">{{i.name}}<br /></h5>
+                            <p><b>{{i.priority}}</b></p>
+                            <p><b>{{i.date}}</b></p>
+                            <a class="btn btn-danger" href="{% url 'deletes' i.id %}">Done</a>
+                            <a class="btn btn-success" href="{% url 'update' i.id %}">Update</a>
+
+                          </div>
+                        </div>
+                
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+
+
+
+
+            </div>
+        </div>
+                
+
+    </div>
+  
+</body>
+{% endblock %}

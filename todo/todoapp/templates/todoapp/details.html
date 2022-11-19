@@ -1,0 +1,14 @@
+{% extends 'todoapp/base.html' %}
+{% block content %}
+<div class="col-md-6">
+    <div class="shadow card">
+      <div class="card-body">
+        <h5 class="card-title">{{task.name}}<br /></h5>
+        <p><b>{{task.priority}}</b></p>
+        <p><b>{{task.date}}</b></p>
+        <a class="btn btn-danger" href="{% url 'deletes' task.id %}">Done</a>
+        <a class="btn btn-success" href="{% url 'update' task.id %}">Update</a>
+
+      </div>
+    </div>
+{% endblock %}
